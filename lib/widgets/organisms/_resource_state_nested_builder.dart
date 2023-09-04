@@ -1,4 +1,4 @@
-import 'package:boginni_utils/utils/resource/resource_state.dart';
+import 'package:boginni_utils/utils/resource/_resource_state.dart';
 import 'package:flutter/material.dart';
 
 class MultiResourceStateBuilder extends StatelessWidget {
