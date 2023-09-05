@@ -2,6 +2,8 @@ name: boginni_utils
 description: Utitilities shared in projects developed by boginni
 version: 0.0.1
 
+repository: https://github.com/boginni/boginni_utils
+
 environment:
   sdk: '>=3.0.6 <4.0.0'
   flutter: ">=1.17.0"
