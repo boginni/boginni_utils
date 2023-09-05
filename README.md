@@ -1,39 +1,32 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# boginni_utils
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A personal collection of Flutter utilities, widgets, and extensions created to simplify the development process across multiple projects.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Disclaimer:
+This package was primarily developed for personal use. While it's available for anyone to use, it's tailored to specific needs and use-cases. If you decide to use it, please ensure you understand the functions and features before integrating them into your project.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Features:
 
-## Features
+### Debouncer: Helps to delay the processing of the function.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+### Extensions:
+* Context extensions to simplify widget tree access.
+* Iterable extensions for advanced list operations.
+* Resource States: A representation of various states of a resource during a fetch operation.
+### Widgets:
+* ResourceStateBuilder: A widget to handle and display different resource states.
+* ResourceStateNestedBuilder: A nested builder for handling nested resource states.
+## Installation:
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+Add boginni_utils to your pubspec.yaml:
+```yaml
+dependencies:
+  boginni_utils: ^latest_version
 ```
 
-## Additional information
+```bash
+flutter pub get
+```
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## License:
+This package is licensed under the MIT License. See the LICENSE file for more details.
