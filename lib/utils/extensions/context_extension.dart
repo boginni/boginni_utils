@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+part of 'package:boginni_utils/boginni_utils.dart';
+
 
 extension ContextExtensions on BuildContext {
   // Fetch ColorScheme from the current theme

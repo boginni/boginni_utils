@@ -1,6 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
+part of 'package:boginni_utils/boginni_utils.dart';
 
 /// A utility class to delay the execution of a function/callback.
 ///

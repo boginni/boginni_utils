@@ -1,6 +1,5 @@
-import 'package:boginni_utils/utils/resource/_resource_state.dart';
-import 'package:boginni_utils/utils/resource/_resource_state_enum.dart';
-import 'package:flutter/material.dart';
+part of 'package:boginni_utils/boginni_utils.dart';
+
 
 class ResourceStateBuilder<T> extends StatelessWidget {
   final ResourceState<T> resource;

@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
-import '_resource_state_enum.dart';
+part of 'package:boginni_utils/boginni_utils.dart';
+
 
 class ResourceState<S> extends ChangeNotifier {
   S? data;
