@@ -57,6 +57,11 @@ class ResourceState<S> extends ChangeNotifier {
   }
 
   bool get isWaiting => _state == ResourceStateEnum.WAITING;
+  bool get isLoading => _state == ResourceStateEnum.LOADING;
+  bool get isSuccess => _state == ResourceStateEnum.SUCCESS;
+  bool get isEmptySuccess => _state == ResourceStateEnum.EMPTY_SUCCESS;
+  bool get isError => _state == ResourceStateEnum.ERROR;
+
 
   void setState(
       {S? data,
