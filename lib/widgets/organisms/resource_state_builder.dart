@@ -21,7 +21,6 @@ class ResourceStateBuilder<T> extends StatelessWidget {
   /// If the widget should ignore the 'EMPTY_SUCCESS' state and use the provided builder function.
   final bool ignoreEmpty;
 
-
   const ResourceStateBuilder({
     super.key,
     required this.resource,

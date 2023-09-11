@@ -2,7 +2,6 @@ part of 'package:boginni_utils/boginni_utils.dart';
 
 // Extension methods for the `Iterable` class.
 extension IterableExtensions<T> on Iterable<T> {
-
   // Returns the first element in the iterable that satisfies the provided test.
   // If no such element is found, it returns null.
   T? firstWhereOrNull(bool Function(T) test) {
@@ -52,9 +51,10 @@ extension IterableExtensions<T> on Iterable<T> {
     var currentIndex = list.indexOf(element);
 
     if (currentIndex == -1) {
-      throw Exception();  // Element not found.
+      throw Exception(); // Element not found.
     } else {
-      var nextIndex = (currentIndex + 1) % list.length;  // Use modulo for wrap-around.
+      var nextIndex =
+          (currentIndex + 1) % list.length; // Use modulo for wrap-around.
       return list[nextIndex];
     }
   }
@@ -65,11 +65,11 @@ extension IterableExtensions<T> on Iterable<T> {
     var currentIndex = list.indexOf(element);
 
     if (currentIndex == -1) {
-      return null;  // Element not found.
+      return null; // Element not found.
     } else {
-      var nextIndex = (currentIndex + 1) % list.length;  // Use modulo for wrap-around.
+      var nextIndex =
+          (currentIndex + 1) % list.length; // Use modulo for wrap-around.
       return list[nextIndex];
     }
   }
-
 }

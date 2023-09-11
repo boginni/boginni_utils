@@ -1,6 +1,5 @@
 part of 'package:boginni_utils/boginni_utils.dart';
 
-
 class ResourceState<S> extends ChangeNotifier {
   S? data;
   Exception? error;
@@ -61,7 +60,6 @@ class ResourceState<S> extends ChangeNotifier {
   bool get isSuccess => _state == ResourceStateEnum.SUCCESS;
   bool get isEmptySuccess => _state == ResourceStateEnum.EMPTY_SUCCESS;
   bool get isError => _state == ResourceStateEnum.ERROR;
-
 
   void setState(
       {S? data,
@@ -126,7 +124,6 @@ class ResourceState<S> extends ChangeNotifier {
       }
     }
   }
-
 
   void beginWaiting() {
     _lastState = _state;
