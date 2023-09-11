@@ -1,12 +1,26 @@
 part of 'package:boginni_utils/boginni_utils.dart';
 
-
+/// A StatelessWidget that helps in building UI based on different states of a resource.
+/// This can be particularly useful in scenarios where the UI changes based on loading, error, success, or other states of a data fetch or operation.
 class ResourceStateBuilder<T> extends StatelessWidget {
+  /// Represents the current state of the resource.
   final ResourceState<T> resource;
-  final Widget? childErro, childLoading, childEmpty, childWaiting;
+
+  /// Customizable child widgets to display based on the different states.
+  final Widget? child, childErro, childLoading, childEmpty, childWaiting;
+
+  /// Default widget to show when none of the states match.
   final Widget childDefault;
-  final Widget Function(BuildContext context, T value) builder;
-  final bool keepAlive, ignoreEmpty;
+
+  /// Function to build the UI for the 'SUCCESS' state. It provides the value of the resource.
+  final Widget Function(BuildContext context, T value, Widget? child) builder;
+
+  /// If the widget should remain in memory when off-screen.
+  final bool keepAlive;
+
+  /// If the widget should ignore the 'EMPTY_SUCCESS' state and use the provided builder function.
+  final bool ignoreEmpty;
+
 
   const ResourceStateBuilder({
     super.key,
@@ -19,6 +33,7 @@ class ResourceStateBuilder<T> extends StatelessWidget {
     this.keepAlive = true,
     this.childDefault = const SizedBox.shrink(),
     this.ignoreEmpty = true,
+    this.child,
   });
 
   @override
@@ -35,10 +50,10 @@ class ResourceStateBuilder<T> extends StatelessWidget {
                   child: CircularProgressIndicator.adaptive(),
                 );
           case ResourceStateEnum.SUCCESS:
-            return builder(context, resource.getData);
+            return builder(context, resource.getData, child);
           case ResourceStateEnum.EMPTY_SUCCESS:
             if (ignoreEmpty && childEmpty == null) {
-              return builder(context, resource.getData);
+              return builder(context, resource.getData, child);
             }
 
             return childEmpty ?? childDefault;
@@ -51,7 +66,7 @@ class ResourceStateBuilder<T> extends StatelessWidget {
             return childDefault;
         }
       },
-      child: childDefault,
+      child: child,
     );
   }
 }

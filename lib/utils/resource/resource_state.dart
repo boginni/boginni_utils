@@ -5,7 +5,7 @@ class ResourceState<S> extends ChangeNotifier {
   S? data;
   Exception? error;
   ResourceStateEnum _state;
-
+  ResourceStateEnum? _lastState;
   ResourceStateEnum get state => _state;
 
   S get getData => data!;
@@ -76,25 +76,24 @@ class ResourceState<S> extends ChangeNotifier {
     }
   }
 
+  void _updateState({
+    S? data,
+    ResourceStateEnum? state,
+    Exception? error,
+    bool notify = true,
+  }) {
+    if (state != null) _state = state;
+    if (data != null) this.data = data;
+    if (error != null) this.error = error;
+    if (notify) notifyListeners();
+  }
+
   void add(S data, {bool notify = true}) {
-    var newState = ResourceStateEnum.SUCCESS;
+    var newState = (data is List && data.isEmpty) || data == null
+        ? ResourceStateEnum.EMPTY_SUCCESS
+        : ResourceStateEnum.SUCCESS;
 
-    if (data is List) {
-      if (data.isEmpty) {
-        newState = ResourceStateEnum.EMPTY_SUCCESS;
-      }
-    } else {
-      if (data == null) {
-        newState = ResourceStateEnum.EMPTY_SUCCESS;
-      }
-    }
-
-    _state = newState;
-    this.data = data;
-    this.error = null;
-    if (notify) {
-      notifyListeners();
-    }
+    _updateState(data: data, state: newState, error: null, notify: notify);
   }
 
   void setError({
@@ -117,10 +116,17 @@ class ResourceState<S> extends ChangeNotifier {
 
   Future<void> load(Future<S> future) async {
     setLoading();
-    add(await future);
+    try {
+      add(await future);
+    } catch (e) {
+      if (e is Exception) {
+        setError(error: e);
+      } else {
+        setError(error: Exception('Unknown error'));
+      }
+    }
   }
 
-  ResourceStateEnum? _lastState;
 
   void beginWaiting() {
     _lastState = _state;
